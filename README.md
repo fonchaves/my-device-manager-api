@@ -8,3 +8,14 @@ RestAPI developed in Java with SpringBoot to management devices
 * Spring Data JPA: use to connect on SQL databases
 * Lombok: Helper to reduce boilerplate code
 <!-- * Spring Security: use to add some level of security to the API -->
+
+# Note
+To design this project, It could be call the Controller functions direct to Repository, but to separate all responsibilities, was adopted to create a Service layer between both.
+List off folders below:
+- Controllers
+- Models
+- Repository
+- Service
+
+
+
