@@ -32,5 +32,20 @@ public class DeviceService {
     //TODO: Add logic to check duplicated devices
 
     return deviceRepository.save(device);
+  }
+
+  public String delete(Device device) {
+
+    //TODO: Add logic to check duplicated devices
+
+    Long id = device.getId();
+
+    try {
+      deviceRepository.delete(device);
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+
+    return "Device "+ id + "deleted";
   } 
 }

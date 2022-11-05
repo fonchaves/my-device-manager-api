@@ -1,6 +1,16 @@
 # my-device-manager-api
 RestAPI developed in Java with SpringBoot to management devices
 
+# Requirements
+- [x] Add device
+- [x] Get device by identifier
+- [x] List all devices
+- Update device (full and partial)
+  - [ ] Full
+  - [ ] Partial
+- [x] Delete a device
+- [x] Search device by brand
+
 # Starters Added
 * H2 Database: use in-memory database to this test
 * Spring Web: use for Spring Rest MVC
@@ -19,5 +29,6 @@ List off folders below:
 
 # Future Work
 - [ ] Add pagination and limits on findAll methods
-
-
+- [ ] Add correct answers to user on delete methods
+- [ ] Add Swagger to entry points
+- [ ] Add a minimal security policy
