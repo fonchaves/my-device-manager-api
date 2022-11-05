@@ -23,6 +23,10 @@ public class DeviceService {
     return deviceRepository.findById(id);
   }
 
+  public Optional<Device> findByBrand(String brand) {
+    return deviceRepository.findByBrand(brand);
+  }
+
   public Device save(Device device) {
 
     //TODO: Add logic to check duplicated devices

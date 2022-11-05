@@ -31,6 +31,11 @@ public class DeviceController {
     return deviceService.findById(id);
   }
 
+  @GetMapping("/{brand}")
+  public Optional<Device>  findByBrand(@PathVariable String brand) {
+    return deviceService.findByBrand(brand);
+  }
+
   @PostMapping()
   public Device saveDevice(@RequestBody Device device){
     return deviceService.save(device);
