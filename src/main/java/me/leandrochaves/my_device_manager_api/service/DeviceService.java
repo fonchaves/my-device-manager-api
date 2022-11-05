@@ -1,7 +1,6 @@
 package me.leandrochaves.my_device_manager_api.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,7 +33,21 @@ public class DeviceService {
     return deviceRepository.save(device);
   }
 
-  public String delete(Long id) throws Exception {
+  public Device updateById(Long id, Device newDevice) {
+
+    return deviceRepository.findById(id)
+      .map(device -> {
+        device.setName(newDevice.getName());
+        device.setBrand(newDevice.getBrand());
+        return deviceRepository.save(device);
+      })
+      .orElseGet(() -> {
+        newDevice.setId(id);
+        return deviceRepository.save(newDevice);
+      });
+  }
+
+  public String deleteById(Long id) throws Exception {
 
     Device device = deviceRepository.findById(id)
       .orElseThrow(() -> new Exception("Device not found on Database!"));
