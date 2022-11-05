@@ -16,34 +16,34 @@ import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.service.DeviceService;
 
 @RestController
-@RequestMapping("/device")
+@RequestMapping("/api")
 public class DeviceController {
 
   @Autowired
   DeviceService deviceService;
 
-  @GetMapping()
-  public List<Device> findAll() {
+  @GetMapping("/device")
+  public List<Device> getAllDevices() {
     return deviceService.findAll();
   }
 
-  @GetMapping("/{id}")
-  public Optional<Device>  findById(@PathVariable Long id) {
-    return deviceService.findById(id);
-  }
-
-  @GetMapping("/{brand}")
-  public Optional<Device>  findByBrand(@PathVariable String brand) {
-    return deviceService.findByBrand(brand);
-  }
-
-  @PostMapping()
-  public Device saveDevice(@RequestBody Device device){
+  @PostMapping("/device")
+  public Device createDevice(@RequestBody Device device){
     return deviceService.save(device);
   }
 
-  @DeleteMapping()
-  public String deleteDevice(@RequestBody Device device){
-    return deviceService.delete(device);
+  @GetMapping("/device/{id}")
+  public Device getDeviceById(@PathVariable Long id) throws Exception {
+    return deviceService.findById(id);
+  }
+
+  @GetMapping("/device/brand/{brand}")
+  public Device getDeviceByBrand(@PathVariable String brand) throws Exception {
+    return deviceService.findByBrand(brand);
+  }
+
+  @DeleteMapping("/device/{id}")
+  public String deleteDevice(@PathVariable Long id) throws Exception{
+    return deviceService.delete(id);
   }
 }

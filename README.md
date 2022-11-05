@@ -32,3 +32,11 @@ List off folders below:
 - [ ] Add correct answers to user on delete methods
 - [ ] Add Swagger to entry points
 - [ ] Add a minimal security policy
+- [ ] Add custom exception treatments for endpoints
+- [ ] Test constructors of Entity
+- [ ] Apply Validation on Controllers endpoints
+
+
+# Sonar Lint attempted on this project
+- [ ] Persistent entities should not be used as arguments of "@RequestMapping" methods
+  * Ref: https://rules.sonarsource.com/java/tag/spring/RSPEC-4684

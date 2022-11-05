@@ -19,33 +19,28 @@ public class DeviceService {
     return deviceRepository.findAll();
   }
 
-  public Optional<Device> findById(Long id) {
-    return deviceRepository.findById(id);
+  public Device findById(Long id) throws Exception {
+    return deviceRepository.findById(id)
+      .orElseThrow(() -> new Exception("Device not found on Database!"));
   }
 
-  public Optional<Device> findByBrand(String brand) {
-    return deviceRepository.findByBrand(brand);
+  public Device findByBrand(String brand) throws Exception {
+    return deviceRepository.findByBrand(brand)
+      .orElseThrow(() -> new Exception("Brand not found on Database!"));
   }
 
   public Device save(Device device) {
-
     //TODO: Add logic to check duplicated devices
-
     return deviceRepository.save(device);
   }
 
-  public String delete(Device device) {
+  public String delete(Long id) throws Exception {
 
-    //TODO: Add logic to check duplicated devices
+    Device device = deviceRepository.findById(id)
+      .orElseThrow(() -> new Exception("Device not found on Database!"));
 
-    Long id = device.getId();
-
-    try {
-      deviceRepository.delete(device);
-    } catch (Exception e) {
-      // TODO: handle exception
-    }
-
-    return "Device "+ id + "deleted";
+    deviceRepository.delete(device);
+    
+    return "Device "+ device.getId() + " deleted";
   } 
 }
