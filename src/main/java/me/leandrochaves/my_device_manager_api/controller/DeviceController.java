@@ -1,5 +1,6 @@
 package me.leandrochaves.my_device_manager_api.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class DeviceController {
 
   @Autowired
   DeviceService deviceService;
+
+  @GetMapping()
+  public List<Device> findAll() {
+    return deviceService.findAll();
+  }
 
   @GetMapping("/{id}")
   public Optional<Device>  findById(@PathVariable Long id) {

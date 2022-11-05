@@ -17,5 +17,7 @@ List off folders below:
 - Repository
 - Service
 
+# Future Work
+- [ ] Add pagination and limits on findAll methods
 
 
