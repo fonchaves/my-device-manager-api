@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import me.leandrochaves.my_device_manager_api.exception.DeviceNotFoundException;
 import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.repository.DeviceRepository;
 
@@ -18,14 +19,14 @@ public class DeviceService {
     return deviceRepository.findAll();
   }
 
-  public Device findById(Long id) throws Exception {
+  public Device findById(Long id){
     return deviceRepository.findById(id)
-      .orElseThrow(() -> new Exception("Device not found on Database!"));
+      .orElseThrow(() -> new DeviceNotFoundException(id, "Could not found device with id = "));
   }
 
-  public Device findByBrand(String brand) throws Exception {
+  public Device findByBrand(String brand) {
     return deviceRepository.findByBrand(brand)
-      .orElseThrow(() -> new Exception("Brand not found on Database!"));
+      .orElseThrow(() -> new DeviceNotFoundException(brand, "Could not found device with brand = "));
   }
 
   public Device save(Device device) {
@@ -61,10 +62,10 @@ public class DeviceService {
       });
   }
 
-  public String deleteById(Long id) throws Exception {
+  public String deleteById(Long id) {
 
     Device device = deviceRepository.findById(id)
-      .orElseThrow(() -> new Exception("Device not found on Database!"));
+      .orElseThrow(() -> new DeviceNotFoundException(id, "Could not found device with id = "));
 
     deviceRepository.delete(device);
     

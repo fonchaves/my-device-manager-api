@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 
 import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.service.DeviceService;
@@ -29,17 +31,18 @@ public class DeviceController {
   }
 
   @PostMapping("/device")
+  @ResponseStatus(HttpStatus.CREATED)
   public Device createDevice(@RequestBody Device device){
     return deviceService.save(device);
   }
 
   @GetMapping("/device/{id}")
-  public Device getDeviceById(@PathVariable Long id) throws Exception {
+  public Device getDeviceById(@PathVariable Long id) {
     return deviceService.findById(id);
   }
 
   @GetMapping("/device/brand/{brand}")
-  public Device getDeviceByBrand(@PathVariable String brand) throws Exception {
+  public Device getDeviceByBrand(@PathVariable String brand) {
     return deviceService.findByBrand(brand);
   }
 
@@ -54,7 +57,8 @@ public class DeviceController {
   }
 
   @DeleteMapping("/device/{id}")
-  public String deleteDevice(@PathVariable Long id) throws Exception{
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public String deleteDevice(@PathVariable Long id) {
     return deviceService.deleteById(id);
   }
 }
