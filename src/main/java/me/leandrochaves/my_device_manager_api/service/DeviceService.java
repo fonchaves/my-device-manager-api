@@ -47,6 +47,20 @@ public class DeviceService {
       });
   }
 
+  public Device updatePartialById(Long id, Device newDevice) {
+    
+    return deviceRepository.findById(id)
+      .map(device -> {
+        device.setName(newDevice.getName() == null? device.getName() : newDevice.getName() );
+        device.setBrand(newDevice.getBrand() == null? device.getBrand() : newDevice.getBrand());
+        return deviceRepository.save(device);
+      })
+      .orElseGet(() -> {
+        newDevice.setId(id);
+        return deviceRepository.save(newDevice);
+      });
+  }
+
   public String deleteById(Long id) throws Exception {
 
     Device device = deviceRepository.findById(id)

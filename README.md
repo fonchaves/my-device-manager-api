@@ -7,7 +7,7 @@ RestAPI developed in Java with SpringBoot to management devices
 - [x] List all devices
 - Update device (full and partial)
   - [x] Full
-  - [ ] Partial
+  - [x] Partial
 - [x] Delete a device
 - [x] Search device by brand
 
@@ -35,7 +35,7 @@ References:
 PUT: https://www.rfc-editor.org/rfc/rfc2616#page-55
 PATCH: https://www.rfc-editor.org/rfc/rfc5789
 
-Of course, Another way is map the object body and check the existence of this contents to update only the new contents, but this approach is'not implemented on this service to improve for a real RESTFUL pattern.
+Of course, another way is map the object body and check the existence of this contents, then update only the new contents and use the PUT method to make this two responsibilities, but this approach is not implemented to improve for a real RESTFUL pattern.
 
 # Future Work
 - [ ] Add pagination and limits on findAll methods
