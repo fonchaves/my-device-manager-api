@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import me.leandrochaves.my_device_manager_api.exception.DeviceAlreadyExistsException;
 import me.leandrochaves.my_device_manager_api.exception.DeviceNotFoundException;
 import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.repository.DeviceRepository;
@@ -24,13 +25,23 @@ public class DeviceService {
       .orElseThrow(() -> new DeviceNotFoundException(id, "Could not found device with id = "));
   }
 
-  public Device findByBrand(String brand) {
-    return deviceRepository.findByBrand(brand)
-      .orElseThrow(() -> new DeviceNotFoundException(brand, "Could not found device with brand = "));
+  public List<Device> findByBrand(String brand) {
+
+    List<Device> devicesList =  deviceRepository.findByBrand(brand);
+    if (!devicesList.isEmpty()) {
+      throw new DeviceNotFoundException(brand, "Could not found device with brand = ");
+    }
+
+    return devicesList;
   }
 
   public Device save(Device device) {
-    //TODO: Add logic to check duplicated devices
+    
+    List<Device> devicesList =  deviceRepository.findByName(device.getName());
+    if (!devicesList.isEmpty()) {
+      throw new DeviceAlreadyExistsException("Device name already exists.");
+    }
+    
     return deviceRepository.save(device);
   }
 
@@ -62,13 +73,11 @@ public class DeviceService {
       });
   }
 
-  public String deleteById(Long id) {
+  public void deleteById(Long id) {
 
     Device device = deviceRepository.findById(id)
       .orElseThrow(() -> new DeviceNotFoundException(id, "Could not found device with id = "));
 
     deviceRepository.delete(device);
-    
-    return "Device "+ device.getId() + " deleted";
   } 
 }

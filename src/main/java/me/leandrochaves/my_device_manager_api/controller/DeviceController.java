@@ -42,7 +42,7 @@ public class DeviceController {
   }
 
   @GetMapping("/device/brand/{brand}")
-  public Device getDeviceByBrand(@PathVariable String brand) {
+  public List<Device> getDeviceByBrand(@PathVariable String brand) {
     return deviceService.findByBrand(brand);
   }
 
@@ -58,7 +58,7 @@ public class DeviceController {
 
   @DeleteMapping("/device/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public String deleteDevice(@PathVariable Long id) {
-    return deviceService.deleteById(id);
+  public void deleteDevice(@PathVariable Long id) {
+    deviceService.deleteById(id);
   }
 }

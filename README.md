@@ -17,7 +17,7 @@ RestAPI developed in Java with SpringBoot to management devices
 * Spring Boot Dev tools: to provide fast application restarts and reloads on Dev environment
 * Spring Data JPA: use to connect on SQL databases
 * Lombok: Helper to reduce boilerplate code
-<!-- * Spring Security: use to add some level of security to the API -->
+* Spring Security: use to add some level of security to the API
 
 # Note
 ### Layers and responsibilities
@@ -27,6 +27,7 @@ List off folders below:
 - Models
 - Repository
 - Service
+- Exception
 
 ### PUT and PATCH METHODs:
 For this service was used the diferences of HTTP methods PUT (to replace all content of a object) and PATCH (To change a partial data object).
@@ -39,10 +40,11 @@ Of course, another way is map the object body and check the existence of this co
 
 # Future Work
 - [ ] Add pagination and limits on findAll methods
-- [ ] Add correct answers to user on delete methods
+- [x] Add correct answers to user on delete methods
+- [x] Add logic to check duplicated names on save method
 - [ ] Add Swagger to entry points
 - [x] Add a minimal security policy
-- [ ] Add custom exception treatments for endpoints
+- [x] Add custom exception treatments for endpoints
 - [ ] Test constructors of Entity
 - [ ] Apply Validation on Controllers endpoints
 - [ ] Add Hateoas to controllers
