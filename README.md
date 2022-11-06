@@ -20,7 +20,7 @@ RestAPI developed in Java with SpringBoot to management devices
 <!-- * Spring Security: use to add some level of security to the API -->
 
 # Note
-### Layers and responsabilities
+### Layers and responsibilities
 To design this project, It could be call the Controller functions direct to Repository, but to separate all responsibilities, was adopted to create a Service layer between both.
 List off folders below:
 - Controllers
@@ -41,10 +41,11 @@ Of course, another way is map the object body and check the existence of this co
 - [ ] Add pagination and limits on findAll methods
 - [ ] Add correct answers to user on delete methods
 - [ ] Add Swagger to entry points
-- [ ] Add a minimal security policy
+- [x] Add a minimal security policy
 - [ ] Add custom exception treatments for endpoints
 - [ ] Test constructors of Entity
 - [ ] Apply Validation on Controllers endpoints
+- [ ] Add Hateoas to controllers
 
 
 # Sonar Lint attempted on this project
