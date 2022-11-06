@@ -39,7 +39,8 @@ PATCH: https://www.rfc-editor.org/rfc/rfc5789
 Of course, another way is map the object body and check the existence of this contents, then update only the new contents and use the PUT method to make this two responsibilities, but this approach is not implemented to improve for a real RESTFUL pattern.
 
 # Future Work
-- [ ] Add pagination and limits on findAll methods
+- [x] Add pagination and limits on findAll methods
+- [ ] Transform FindByBrand to return with pagination and limits
 - [x] Add correct answers to user on delete methods
 - [x] Add logic to check duplicated names on save method
 - [ ] Add Swagger to entry points

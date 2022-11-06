@@ -3,6 +3,9 @@ package me.leandrochaves.my_device_manager_api.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import me.leandrochaves.my_device_manager_api.exception.DeviceAlreadyExistsException;
@@ -16,8 +19,9 @@ public class DeviceService {
   @Autowired
   DeviceRepository deviceRepository;
 
-  public List<Device> findAll() {
-    return deviceRepository.findAll();
+  public Page<Device> findAll(int page, int size) {
+    Pageable p = PageRequest.of(page, size);
+    return deviceRepository.findAll(p);
   }
 
   public Device findById(Long id){
