@@ -44,7 +44,7 @@ Of course, another way is map the object body and check the existence of this co
 - [x] Transform findByBrand to return with pagination and limits
 - [x] Add correct answers to user on delete methods
 - [x] Add logic to check duplicated names on save method
-- [ ] Add DTO to controllers
+- [x] Add DTO to controllers
 - [ ] Add Swagger to entry points
 - [x] Add a minimal security policy
 - [x] Add custom exception treatments for endpoints

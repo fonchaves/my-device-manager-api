@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
 import me.leandrochaves.my_device_manager_api.dto.DeviceDTO;
-import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.service.DeviceService;
 
 @RestController
@@ -27,7 +26,7 @@ public class DeviceController {
   DeviceService deviceService;
 
   @GetMapping("/device")
-  public Page<Device> getAllDevices(
+  public Page<DeviceDTO> getAllDevices(
       @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "10") int size) {
 
@@ -41,7 +40,7 @@ public class DeviceController {
   }
 
   @GetMapping("/device/{id}")
-  public Device getDeviceById(@PathVariable Long id) {
+  public DeviceDTO getDeviceById(@PathVariable Long id) {
     return deviceService.findById(id);
   }
 
@@ -62,7 +61,7 @@ public class DeviceController {
   }
 
   @GetMapping("/device/brand")
-  public Page<Device> getDeviceByBrand(
+  public Page<DeviceDTO> getDeviceByBrand(
       @RequestParam(defaultValue = "0", name = "q") String query,
       @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "10") int size) {

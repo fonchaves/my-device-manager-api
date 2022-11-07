@@ -24,17 +24,21 @@ public class DeviceService {
   @Autowired
   DeviceConverter deviceConverter;
 
-  public Page<Device> findAll(int page, int size) {
+  public Page<DeviceDTO> findAll(int page, int size) {
     Pageable p = PageRequest.of(page, size);
-    return deviceRepository.findAll(p);
+
+    Page<Device> devices = deviceRepository.findAll(p);
+    return devices.map(item -> deviceConverter.convertEntityToDto(item));
   }
 
-  public Device findById(Long id){
-    return deviceRepository.findById(id)
+  public DeviceDTO findById(Long id){
+    Device device = deviceRepository.findById(id)
       .orElseThrow(() -> new DeviceNotFoundException(id, "Could not found device with id = "));
+
+    return deviceConverter.convertEntityToDto(device);
   }
 
-  public Page<Device> findByBrand(String brand, int page, int size) {
+  public Page<DeviceDTO> findByBrand(String brand, int page, int size) {
 
     Pageable p = PageRequest.of(page, size);
 
@@ -43,7 +47,7 @@ public class DeviceService {
       throw new DeviceNotFoundException(brand, "Could not found device with brand = ");
     }
 
-    return devicesList;
+    return devicesList.map(item -> deviceConverter.convertEntityToDto(item));
   }
 
   public DeviceDTO save(DeviceDTO deviceDTO) {
