@@ -6,18 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import me.leandrochaves.my_device_manager_api.converter.DeviceConverter;
+import me.leandrochaves.my_device_manager_api.dto.DeviceDTO;
 import me.leandrochaves.my_device_manager_api.exception.DeviceAlreadyExistsException;
 import me.leandrochaves.my_device_manager_api.exception.DeviceNotFoundException;
 import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.repository.DeviceRepository;
 
-@Component
+@Service
 public class DeviceService {
 
   @Autowired
   DeviceRepository deviceRepository;
+
+  @Autowired
+  DeviceConverter deviceConverter;
 
   public Page<Device> findAll(int page, int size) {
     Pageable p = PageRequest.of(page, size);
@@ -41,14 +46,18 @@ public class DeviceService {
     return devicesList;
   }
 
-  public Device save(Device device) {
+  public DeviceDTO save(DeviceDTO deviceDTO) {
     
+    Device device = deviceConverter.convertDtoToEntity(deviceDTO);
+
     List<Device> devicesList =  deviceRepository.findByName(device.getName());
     if (!devicesList.isEmpty()) {
       throw new DeviceAlreadyExistsException("Device name already exists.");
     }
+
+    device = deviceRepository.save(device);
     
-    return deviceRepository.save(device);
+    return deviceConverter.convertEntityToDto(device);
   }
 
   public Device updateById(Long id, Device newDevice) {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
+import me.leandrochaves.my_device_manager_api.dto.DeviceDTO;
 import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.service.DeviceService;
 
@@ -35,8 +36,8 @@ public class DeviceController {
 
   @PostMapping("/device")
   @ResponseStatus(HttpStatus.CREATED)
-  public Device createDevice(@RequestBody Device device) {
-    return deviceService.save(device);
+  public DeviceDTO createDevice(@RequestBody DeviceDTO deviceDTO) {
+    return deviceService.save(deviceDTO);
   }
 
   @GetMapping("/device/{id}")
@@ -67,5 +68,5 @@ public class DeviceController {
       @RequestParam(defaultValue = "10") int size) {
     return deviceService.findByBrand(query, page, size);
   }
-  
+
 }
