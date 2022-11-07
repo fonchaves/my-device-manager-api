@@ -60,9 +60,11 @@ public class DeviceService {
     return deviceConverter.convertEntityToDto(device);
   }
 
-  public Device updateById(Long id, Device newDevice) {
+  public DeviceDTO updateById(Long id, DeviceDTO newDeviceDTO) {
 
-    return deviceRepository.findById(id)
+    final Device newDevice = deviceConverter.convertDtoToEntity(newDeviceDTO);
+
+    Device updatedDevice =  deviceRepository.findById(id)
       .map(device -> {
         device.setName(newDevice.getName());
         device.setBrand(newDevice.getBrand());
@@ -72,11 +74,15 @@ public class DeviceService {
         newDevice.setId(id);
         return deviceRepository.save(newDevice);
       });
+
+      return deviceConverter.convertEntityToDto(updatedDevice);
   }
 
-  public Device updatePartialById(Long id, Device newDevice) {
+  public DeviceDTO updatePartialById(Long id, DeviceDTO newDeviceDTO) {
+
+    final Device newDevice = deviceConverter.convertDtoToEntity(newDeviceDTO);
     
-    return deviceRepository.findById(id)
+    Device updatedDevice = deviceRepository.findById(id)
       .map(device -> {
         device.setName(newDevice.getName() == null? device.getName() : newDevice.getName() );
         device.setBrand(newDevice.getBrand() == null? device.getBrand() : newDevice.getBrand());
@@ -86,6 +92,8 @@ public class DeviceService {
         newDevice.setId(id);
         return deviceRepository.save(newDevice);
       });
+
+      return deviceConverter.convertEntityToDto(updatedDevice);
   }
 
   public void deleteById(Long id) {

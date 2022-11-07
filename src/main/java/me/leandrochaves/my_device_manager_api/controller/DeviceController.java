@@ -46,13 +46,13 @@ public class DeviceController {
   }
 
   @PutMapping("/device/{id}")
-  public Device updateDeviceById(@PathVariable Long id, @RequestBody Device device) {
-    return deviceService.updateById(id, device);
+  public DeviceDTO updateDeviceById(@PathVariable Long id, @RequestBody DeviceDTO deviceDTO) {
+    return deviceService.updateById(id, deviceDTO);
   }
 
   @PatchMapping("/device/{id}")
-  public Device updatePartialDeviceById(@PathVariable Long id, @RequestBody Device device) {
-    return deviceService.updatePartialById(id, device);
+  public DeviceDTO updatePartialDeviceById(@PathVariable Long id, @RequestBody DeviceDTO deviceDTO) {
+    return deviceService.updatePartialById(id, deviceDTO);
   }
 
   @DeleteMapping("/device/{id}")

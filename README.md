@@ -55,5 +55,5 @@ Of course, another way is map the object body and check the existence of this co
 
 
 ### Sonar Lint attempted on this project
-- [ ] Persistent entities should not be used as arguments of "@RequestMapping" methods
+- [x] Persistent entities should not be used as arguments of "@RequestMapping" methods
   * Ref: https://rules.sonarsource.com/java/tag/spring/RSPEC-4684
