@@ -1,7 +1,5 @@
 package me.leandrochaves.my_device_manager_api.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,25 +26,22 @@ public class DeviceController {
   DeviceService deviceService;
 
   @GetMapping("/device")
-  public Page<Device> getAllDevices(@RequestParam(defaultValue = "0") int page, 
-  @RequestParam(defaultValue = "10") int size) {
+  public Page<Device> getAllDevices(
+      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "10") int size) {
+
     return deviceService.findAll(page, size);
   }
 
   @PostMapping("/device")
   @ResponseStatus(HttpStatus.CREATED)
-  public Device createDevice(@RequestBody Device device){
+  public Device createDevice(@RequestBody Device device) {
     return deviceService.save(device);
   }
 
   @GetMapping("/device/{id}")
   public Device getDeviceById(@PathVariable Long id) {
     return deviceService.findById(id);
-  }
-
-  @GetMapping("/device/brand/{brand}")
-  public List<Device> getDeviceByBrand(@PathVariable String brand) {
-    return deviceService.findByBrand(brand);
   }
 
   @PutMapping("/device/{id}")
@@ -64,4 +59,13 @@ public class DeviceController {
   public void deleteDevice(@PathVariable Long id) {
     deviceService.deleteById(id);
   }
+
+  @GetMapping("/device/brand")
+  public Page<Device> getDeviceByBrand(
+      @RequestParam(defaultValue = "0", name = "q") String query,
+      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "10") int size) {
+    return deviceService.findByBrand(query, page, size);
+  }
+  
 }

@@ -29,10 +29,12 @@ public class DeviceService {
       .orElseThrow(() -> new DeviceNotFoundException(id, "Could not found device with id = "));
   }
 
-  public List<Device> findByBrand(String brand) {
+  public Page<Device> findByBrand(String brand, int page, int size) {
 
-    List<Device> devicesList =  deviceRepository.findByBrand(brand);
-    if (!devicesList.isEmpty()) {
+    Pageable p = PageRequest.of(page, size);
+
+    Page<Device> devicesList =  deviceRepository.findAllByBrand(brand, p);
+    if (devicesList.isEmpty()) {
       throw new DeviceNotFoundException(brand, "Could not found device with brand = ");
     }
 

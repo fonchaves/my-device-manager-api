@@ -29,7 +29,7 @@ List off folders below:
 - Service
 - Exception
 
-### PUT and PATCH METHODs:
+### PUT and PATCH methods:
 For this service was used the diferences of HTTP methods PUT (to replace all content of a object) and PATCH (To change a partial data object).
 
 References:
@@ -40,9 +40,10 @@ Of course, another way is map the object body and check the existence of this co
 
 # Future Work
 - [x] Add pagination and limits on findAll methods
-- [ ] Transform FindByBrand to return with pagination and limits
+- [x] Transform findByBrand to return with pagination and limits
 - [x] Add correct answers to user on delete methods
 - [x] Add logic to check duplicated names on save method
+- [ ] Add DTO to controllers
 - [ ] Add Swagger to entry points
 - [x] Add a minimal security policy
 - [x] Add custom exception treatments for endpoints
@@ -51,6 +52,7 @@ Of course, another way is map the object body and check the existence of this co
 - [ ] Add Hateoas to controllers
 
 
-# Sonar Lint attempted on this project
+
+### Sonar Lint attempted on this project
 - [ ] Persistent entities should not be used as arguments of "@RequestMapping" methods
   * Ref: https://rules.sonarsource.com/java/tag/spring/RSPEC-4684
