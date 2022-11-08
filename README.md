@@ -63,3 +63,7 @@ Of course, another way is map the object body and check the existence of this co
 
 # Swagger
 Local endpoint: http://localhost:8080/swagger-ui/index.html
+
+
+# Postman Collections
+Collection [Download link](./colection/MyDeviceManagerAPI.postman_collection.json)

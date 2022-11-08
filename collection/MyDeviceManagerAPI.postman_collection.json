@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "17b9f718-48d6-41df-939a-883b9ab4cac5",
+		"name": "MyDevice Manager API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List All Devices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/device?page=0&size=2",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"device"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Device by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/device/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"device",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Device by Brand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/device/brand?q=Apple&page=0&size=2",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"device",
+						"brand"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Apple"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My personal mobile device\",\n    \"brand\": \"Apple\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/device",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Device",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My personal mobile device updated\",\n    \"brand\": \"Android\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/device/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"device",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Partial Device",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My personal mobile device partial updated\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/device/2",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"device",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Device by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/device/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"device",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{BASIC_PASS}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{BASIC_USER}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8080",
+			"type": "default"
+		},
+		{
+			"key": "BASIC_USER",
+			"value": "{{USERNAME}}",
+			"type": "default"
+		},
+		{
+			"key": "BASIC_PASS",
+			"value": "{{PASSWORD}}",
+			"type": "default"
+		}
+	]
+}
