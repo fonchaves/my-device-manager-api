@@ -29,6 +29,8 @@ List off folders below:
 - Repository
 - Service
 - Exception
+- Dto
+- Converter
 
 ### PUT and PATCH methods:
 For this service was used the diferences of HTTP methods PUT (to replace all content of a object) and PATCH (To change a partial data object).
@@ -45,7 +47,7 @@ Of course, another way is map the object body and check the existence of this co
 - [x] Add correct answers to user on delete methods
 - [x] Add logic to check duplicated names on save method
 - [x] Add DTO to controllers
-- [ ] Add Swagger to entry points
+- [x] Add Swagger to entry points
 - [x] Add a minimal security policy
 - [x] Add custom exception treatments for endpoints
 - [ ] Test constructors of Entity
@@ -57,3 +59,7 @@ Of course, another way is map the object body and check the existence of this co
 ### Sonar Lint attempted on this project
 - [x] Persistent entities should not be used as arguments of "@RequestMapping" methods
   * Ref: https://rules.sonarsource.com/java/tag/spring/RSPEC-4684
+
+
+# Swagger
+Local endpoint: http://localhost:8080/swagger-ui/index.html
