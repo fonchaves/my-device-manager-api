@@ -66,4 +66,4 @@ Local endpoint: http://localhost:8080/swagger-ui/index.html
 
 
 # Postman Collections
-Collection [Download link](./colection/MyDeviceManagerAPI.postman_collection.json)
+Collection [Download link](./collection/MyDeviceManagerAPI.postman_collection.json)
