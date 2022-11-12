@@ -1,4 +1,4 @@
-# my-device-manager-api
+# My Device Manager API
 RestAPI developed in Java with SpringBoot to management devices
 
 # Requirements
@@ -50,7 +50,7 @@ Of course, another way is map the object body and check the existence of this co
 - [x] Add Swagger to entry points
 - [x] Add a minimal security policy
 - [x] Add custom exception treatments for endpoints
-- [ ] Test constructors of Entity
+- [x] Test constructors of Entity
 - [ ] Apply Validation on Controllers endpoints
 - [ ] Add Hateoas to controllers
 

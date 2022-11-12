@@ -31,29 +31,9 @@ public class Device {
   @UpdateTimestamp
   private Timestamp updatedAt;
 
-  // CONSTRUCTORS
-
+  // CONSTRUCTOR
   public Device() {
     super();
-  }
-
-  public Device(String name, String brand) {
-    this.name = name;
-    this.brand = brand;
-  }
-
-  public Device(Long id, String name, String brand) {
-    this.id = id;
-    this.name = name;
-    this.brand = brand;
-  }
-
-  public Device(Long id, String name, String brand, Timestamp createdAt, Timestamp updatedAt) {
-    this.id = id;
-    this.name = name;
-    this.brand = brand;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
   }
 
   // GETTERS AND SETTERS
