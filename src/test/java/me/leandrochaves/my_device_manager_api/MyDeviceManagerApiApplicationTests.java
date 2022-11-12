@@ -10,4 +10,16 @@ class MyDeviceManagerApiApplicationTests {
 	void contextLoads() {
 	}
 
+	//  TEST TO VALID PARAMS OF CONTROLLERS
+	// @Test
+	// public void givenSaveBasicInfo_whenCorrectInput_thenSuccess() throws Exception {
+	// 		this.mockMvc.perform(MockMvcRequestBuilders.post("/saveBasicInfo")
+	// 			.accept(MediaType.TEXT_HTML)
+	// 			.param("name", "test123")
+	// 			.param("password", "pass"))
+	// 			.andExpect(view().name("success"))
+	// 			.andExpect(status().isOk())
+	// 			.andDo(print());
+	// }
+
 }

@@ -51,7 +51,7 @@ Of course, another way is map the object body and check the existence of this co
 - [x] Add a minimal security policy
 - [x] Add custom exception treatments for endpoints
 - [x] Test constructors of Entity
-- [ ] Apply Validation on Controllers endpoints
+- [x] Apply Validation on Controllers endpoints
 - [ ] Add Hateoas to controllers
 
 
