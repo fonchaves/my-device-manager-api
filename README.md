@@ -54,6 +54,9 @@ Of course, another way is map the object body and check the existence of this co
 - [x] Apply Validation on Controllers endpoints
 - [ ] Add Hateoas to controllers
 
+# Other Features implemented
+- [x] Add interfaces to Service just for a example case.
+
 
 
 ### Sonar Lint attempted on this project

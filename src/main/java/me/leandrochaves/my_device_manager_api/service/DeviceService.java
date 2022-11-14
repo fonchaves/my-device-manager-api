@@ -16,7 +16,7 @@ import me.leandrochaves.my_device_manager_api.model.Device;
 import me.leandrochaves.my_device_manager_api.repository.DeviceRepository;
 
 @Service
-public class DeviceService {
+public class DeviceService implements DeviceServiceInterface<DeviceDTO>{
 
   @Autowired
   DeviceRepository deviceRepository;
@@ -24,6 +24,7 @@ public class DeviceService {
   @Autowired
   DeviceConverter deviceConverter;
 
+  @Override
   public Page<DeviceDTO> findAll(int page, int size) {
     Pageable p = PageRequest.of(page, size);
 
@@ -31,6 +32,7 @@ public class DeviceService {
     return devices.map(item -> deviceConverter.convertEntityToDto(item));
   }
 
+  @Override
   public DeviceDTO findById(Long id){
     Device device = deviceRepository.findById(id)
       .orElseThrow(() -> new DeviceNotFoundException(id, "Could not found device with id = "));
@@ -38,6 +40,7 @@ public class DeviceService {
     return deviceConverter.convertEntityToDto(device);
   }
 
+  @Override
   public Page<DeviceDTO> findByBrand(String brand, int page, int size) {
 
     Pageable p = PageRequest.of(page, size);
@@ -50,6 +53,7 @@ public class DeviceService {
     return devicesList.map(item -> deviceConverter.convertEntityToDto(item));
   }
 
+  @Override
   public DeviceDTO save(DeviceDTO deviceDTO) {
     
     Device device = deviceConverter.convertDtoToEntity(deviceDTO);
@@ -64,6 +68,7 @@ public class DeviceService {
     return deviceConverter.convertEntityToDto(device);
   }
 
+  @Override
   public DeviceDTO updateById(Long id, DeviceDTO newDeviceDTO) {
 
     final Device newDevice = deviceConverter.convertDtoToEntity(newDeviceDTO);
@@ -82,6 +87,7 @@ public class DeviceService {
       return deviceConverter.convertEntityToDto(updatedDevice);
   }
 
+  @Override
   public DeviceDTO updatePartialById(Long id, DeviceDTO newDeviceDTO) {
 
     final Device newDevice = deviceConverter.convertDtoToEntity(newDeviceDTO);
@@ -100,6 +106,7 @@ public class DeviceService {
       return deviceConverter.convertEntityToDto(updatedDevice);
   }
 
+  @Override
   public void deleteById(Long id) {
 
     Device device = deviceRepository.findById(id)
